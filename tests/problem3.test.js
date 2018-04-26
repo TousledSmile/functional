@@ -28,6 +28,20 @@
 
 */
 
+function curry(func) {
+    const argumentsLength = func.length;
+
+    if (argumentsLength === 0) return func;
+
+    return function (argument) {
+        if (argumentsLength > 1) {
+            return curry(func.bind(null, argument));
+        } else {
+            return func(argument);
+        }
+    }
+}
+
 describe('problem3 - curry', () => {
     it("returns the same func if it doesn't require any parameters", () => {
         const func = () => 'apple';
