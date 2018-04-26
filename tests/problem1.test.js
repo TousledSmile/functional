@@ -9,6 +9,22 @@
 
 */
 
+function groupBy(numbersTable, groupFunction) {
+    return numbersTable.reduce((groupedNumbers, number) => {
+        const groupName = groupFunction(number) + '';
+
+    console.log(groupedNumbers)
+
+    if (!groupedNumbers[groupName]) {
+        groupedNumbers[groupName] = [];
+    }
+
+    groupedNumbers[groupName].push(number);
+
+    return groupedNumbers;
+}, {});
+}
+
 describe('problem1 - groupBy', () => {
     it('returns an object', () => {
         expect(groupBy([1, 2, 3], v => v)).toBeInstanceOf(Object);
