@@ -36,9 +36,9 @@ function curry(func) {
     return function (argument) {
         if (argumentsLength > 1) {
             return curry(func.bind(null, argument));
-        } else {
-            return func(argument);
         }
+
+        return func(argument);
     }
 }
 
