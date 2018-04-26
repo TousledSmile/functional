@@ -16,6 +16,14 @@
     greetButVeryLoud('John') // HELLO JOHN!!!!!!!!1111one
 */
 
+function compose(...functions) {
+    return function(something) {
+        return functions.reduce((changedSomething, currentFunction) => {
+            return currentFunction(changedSomething);
+        }, something);
+    }
+}
+
 describe('problem2 - compose', () => {
     function stringToNumber(s) {
         return parseInt(s);
